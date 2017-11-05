@@ -2,7 +2,7 @@
 using namespace std;
 
 void glubina(int* evo, int* evd, int e, int k, int v){
-if(v>1)
+if(v>1){
    for(int i=0;i<e;i++){
       if(evo[i]==k){
          cout << i+1 << "  " << "  " << "  ";
@@ -10,6 +10,7 @@ if(v>1)
          glubina(evo, evd, e, evd[i], v);
       };
    };
+};
 }
 
 void Graff(int e, int v){
