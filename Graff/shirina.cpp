@@ -2,7 +2,7 @@
 using namespace std;
 
 void shirina(int* evo, int* evd, int e, int k, int v){
-if(v>1)
+if(v>1){
    int z=0;
    for(int i=0;i<e;i++){
       if(evo[i]==k){
@@ -23,6 +23,7 @@ if(v>1)
    for(int i=0;i<z;z++){
       shirina(evo, evd, e, evd[y[i]], v);
    };
+};
 }
 
 void Graff(int e, int v){
