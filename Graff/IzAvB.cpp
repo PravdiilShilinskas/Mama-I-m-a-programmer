@@ -5,18 +5,12 @@ int shirina(int* evo, int* evd, int e, int k, int v, int n){
 if(v>1){
    for(int i=0;i<e;i++){
       if(evo[i]==k){
-         if(evd[i]==n){
+         if((evd[i]==n)||(shirina(evo, evd, e, evd[i], v, n)==1)){
             cout << i << "   ";
             return 1;
          }
          else{
-            if(shirina(evo, evd, e, evd[i], v, n)==1){
-               cout << i << "   ";
-               return 1;
-            }
-            else{
-               return 0;
-            };
+            return 0;
          };
       };
    };
