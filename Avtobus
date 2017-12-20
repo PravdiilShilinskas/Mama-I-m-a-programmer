@@ -10,11 +10,11 @@ void mazay(int* metka, int k, int p, int n, int N, int* iz, int* v, int* l){
           temp=j;
         };
       };
-      if(l[p]<l[j]){
-        l[p]=l[j];
+      if(l[p]<l[temp]){
+        l[p]=l[temp];
       };
       metka[i]=1;
-      mazay(*metka, i, j, n, N, *iz, *v, *l);
+      mazay(*metka, i, temp, n, N, *iz, *v, *l);
     };
   };
 }
