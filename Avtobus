@@ -5,16 +5,22 @@ void mazay(int* metka, int k, int p, int n, int N, int* iz, int* v, int* l){
   for(int i=1;i<n;i++){
     if(metka[i]!=1){
       int temp;
+      int temporissimo;
       for(int j=0;j<N;j++){
-        if((iz[j]==k)&&(v[j]==i)||(iz[j]==i)&&(v[j]==k)){
+        if((iz[j]==k)&&(v[j]==i)){
           temp=j;
         };
       };
-      if(l[p]<l[temp]){
-        l[p]=l[temp];
+      for(int j=0;j<N;j++){
+        if((iz[j]==k)&&(v[j]==v[p])){
+          temporissimo=j;
+        };
       };
       metka[i]=1;
       mazay(metka, i, temp, n, N, iz, v, l);
+      if(l[p]<l[temp]+l[temporissimo]){
+        l[p]=l[temp]+l[temporissimo];
+      };
     };
   };
 }
@@ -28,8 +34,9 @@ int bot(int n, int N, int* iz, int* v, int* l){
   metka[0]=1;
   mazay(metka, 0, 0, n, N, iz, v, l);
   for(int i=0;i<N;i++){
-    b+=2*l[i];
+    b=l[i];
   };
+  b=b*62;
   b+=N*10000;
   return b;
 }
