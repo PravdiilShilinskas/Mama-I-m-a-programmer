@@ -14,7 +14,7 @@ void mazay(int* metka, int k, int p, int n, int N, int* iz, int* v, int* l){
         l[p]=l[temp];
       };
       metka[i]=1;
-      mazay(*metka, i, temp, n, N, *iz, *v, *l);
+      mazay(metka, i, temp, n, N, iz, v, l);
     };
   };
 }
@@ -26,7 +26,7 @@ int bot(int n, int N, int* iz, int* v, int* l){
     metka[i]=0;
   };
   metka[0]=1;
-  mazay(*metka, 0, 0, n, N, *iz, *v, *l);
+  mazay(metka, 0, 0, n, N, iz, v, l);
   for(int i=0;i<N;i++){
     b+=2*l[i];
   };
@@ -46,5 +46,5 @@ int main(){
     iz[i]--;
     v[i]--;
   };
-  cout << bot(n, N, *iz, *v, *l);
+  cout << bot(n, N, iz, v, l);
 }
