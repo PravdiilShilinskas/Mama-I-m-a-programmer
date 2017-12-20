@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+void mazay(int* metka, int k, int p, int n, int N, int* iz, int* v, int* l){
+  for(int i=1;i<n;i++){
+    if(metka[i]!=1){
+      int temp;
+      for(int j=0;j<N;j++){
+        if((iz[j]==k)&&(v[j]==i)||(iz[j]==i)&&(v[j]==k)){
+          temp=j;
+        };
+      };
+      if(l[p]<l[j]){
+        l[p]=l[j];
+      };
+      metka[i]=1;
+      mazay(*metka, i, j, n, N, *iz, *v, *l);
+    };
+  };
+}
+
+int bot(int n, int N, int* iz, int* v, int* l){
+  int metka[n];
+  int b=0;
+  for(int i=1;i<n;i++){
+    metka[i]=0;
+  };
+  metka[0]=1;
+  mazay(*metka, 0, 0, n, N, *iz, *v, *l);
+  for(int i=0;i<N;i++){
+    b+=2*l[i];
+  };
+  b+=N*10000;
+  return b;
+}
+
+int main(){
+  int n;//города
+  cin >> n;
+  int N=n+(n*(n-3)/2);//дороги
+  int iz[N];//из города
+  int v[N];//в город
+  int l[N];//тратится бензина
+  for(int i=0;i<N;i++){
+    cin >> iz[i] >> v[i] >> l[i];
+    iz[i]--;
+    v[i]--;
+  };
+  cout << bot(n, N, *iz, *v, *l);
+}
